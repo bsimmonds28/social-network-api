@@ -17,16 +17,16 @@ const userSchema = new Schema(
     },
     thoughts: [
         {
-            type: Schema.types.objectId,
+            type: Schema.Types.ObjectId,
             ref: 'thought',
-        }
+        },
     ],
     //Array of _id values referencing teh User model (self-reference)
     friends: [
         {
-            type: Schema.types.objectId,
+            type: Schema.Types.ObjectId,
             ref: 'user',
-        }
+        },
     ],
   },
   {
@@ -37,7 +37,7 @@ const userSchema = new Schema(
 );
 
 // Create a virtual property
-postSchema.virtual('friendCount').get(function () {
+userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
 });
 

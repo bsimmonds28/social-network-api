@@ -37,7 +37,7 @@ const thoughtSchema = new Schema(
 );
 
 // Create a virtual property
-postSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
