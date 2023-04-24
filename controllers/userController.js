@@ -57,6 +57,8 @@ module.exports = {
 
   // Delete a user and remove their associated thought
   deleteUser(req, res) {
+    console.log(req.params)
+    console.log(req.params.userId)
     User.findOneAndRemove({ _id: req.params.userId })
       .then((user) =>
       !user
@@ -99,9 +101,6 @@ module.exports = {
 
   // Remove a friend from a user
   removeFriend(req, res) {
-    console.log(req.params)
-    console.log(req.params.userId)
-    console.log(req.params.friendId)
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } },
