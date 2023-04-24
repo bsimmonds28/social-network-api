@@ -22,19 +22,20 @@ module.exports = {
   // INCOMPLETE - Create a thought and add associated user's id
   createThought(req, res) {
     Thought.create(req.body)
-      .then((thought) =>
+      .then((thought) => {
         User.findOneAndUpdate(
-            { username: req.params.userId },
-            { $addToSet: { Thought: req.body } },
-            { runValidators: true, new: true }
+            { _id: req.body.userId },
+            { $push: { thoughts: thought._id } },
+            { new: true }
           )
-      )
+        })
       .then((thought) => res.json(thought))
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
       });
   },
+  
   // Update a thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(

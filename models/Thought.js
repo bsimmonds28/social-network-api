@@ -18,13 +18,10 @@ const thoughtSchema = new Schema(
       },
     },
     //Check - user that created this thought
-    username: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'user',
-          required: true,
-        },
-      ],
+    username: {
+       type: String,
+       required: true,
+    },
     reactions: [reactionSchema],
   },
   {
@@ -41,6 +38,6 @@ thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
-const Thought = model('thought', thoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;

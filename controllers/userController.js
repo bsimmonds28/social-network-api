@@ -40,7 +40,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Update a thought
+  // Update a user
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -83,11 +83,9 @@ module.exports = {
   // Add a freind to a user
   addFriend(req, res) {
     console.log('You are adding a friend');
-    console.log(req.body);
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.body } },
-      { runValidators: true, new: true }
+      { $push: { friends: req.body.userId } },
     )
       .then((user) =>
         !user
@@ -101,10 +99,12 @@ module.exports = {
 
   // Remove a friend from a user
   removeFriend(req, res) {
+    console.log(req.params)
+    console.log(req.params.userId)
+    console.log(req.params.friendId)
     User.findOneAndUpdate(
-      { _id: req.params.UserId },
-      { $pull: { friend: { friendId: req.params.friendId } } },
-      { runValidators: true, new: true }
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
     )
       .then((user) =>
         !user
