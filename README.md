@@ -6,7 +6,7 @@ This application is an API for a social network web application where users can 
 
 Click the image below to see a demo of the application.
 
-[![Demo video of how to use the application](./assets/app_screenshot.png)](https://youtu.be/9mhuOJFV21M)
+[![Demo video of how to use the application](./screenshot.png)](https://youtu.be/1Tu5UBrzqVw)
 
 ## Table of Contents
 - [Description](#description)
