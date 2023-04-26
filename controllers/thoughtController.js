@@ -52,7 +52,7 @@ module.exports = {
           { new: true }
         )
     })
-    .then((thought) => res.json(thought))
+    .then(() => res.json({ message: 'Thought successfully updated' }))
     .catch((err) => res.status(500).json(err));
   },
   // Delete a thought
